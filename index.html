@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ionik Seru! Belajar Ikatan Ionik</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF8E7;--card:#fff;--ink:#1F1B3A;--mut:#5b5680;--yel:#FFD23F;--pink:#FF4F8B;--sky:#2EC4F1;--pur:#6C4DF6;--mint:#2ED9A3;--org:#FF8A3D;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17132e;--card:#241e47;--ink:#fff7e0;--mut:#c4bde8}}
+:root[data-theme="dark"]{--bg:#17132e;--card:#241e47;--ink:#fff7e0;--mut:#c4bde8}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;font-size:17px;line-height:1.6}
+h1,h2,h3{font-family:'Baloo 2',Nunito,sans-serif;line-height:1.1;margin:0 0 .5rem}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px}
+.hero{background:linear-gradient(135deg,var(--pur),var(--pink) 60%,var(--org));color:#fff;padding:48px 0 70px;position:relative;overflow:hidden;border-radius:0 0 50% 50%/0 0 36px 36px}
+.hero h1{font-size:clamp(2.4rem,8vw,4.6rem);font-weight:800;text-shadow:3px 3px 0 rgba(31,27,58,.35)}
+.hero p{max-width:560px;font-size:1.15rem}
+.ion{position:absolute;border-radius:50%;display:grid;place-items:center;font-family:'Baloo 2';font-weight:800;color:var(--ink);animation:fl 5s ease-in-out infinite}
+.i1{width:90px;height:90px;background:var(--yel);right:8%;top:30px;font-size:1.6rem}
+.i2{width:64px;height:64px;background:var(--mint);right:24%;top:120px;font-size:1.2rem;animation-delay:-2s}
+.i3{width:50px;height:50px;background:var(--sky);right:4%;top:150px;animation-delay:-3s}
+@keyframes fl{50%{transform:translateY(-16px) rotate(8deg)}}
+@media (prefers-reduced-motion:reduce){.ion{animation:none}html{scroll-behavior:auto}}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:8px;overflow-x:auto;padding:10px 18px;background:var(--bg);margin-top:-30px}
+nav a{white-space:nowrap;text-decoration:none;color:var(--ink);background:var(--yel);padding:8px 16px;border-radius:99px;font-weight:800;border:3px solid var(--ink)}
+nav a:nth-child(2){background:var(--sky)}nav a:nth-child(3){background:var(--mint)}nav a:nth-child(4){background:var(--pink);color:#fff}
+section{padding:40px 0}
+h2{font-size:clamp(1.8rem,5vw,2.6rem)}
+.box{background:var(--card);border:3px solid var(--ink);border-radius:22px;padding:20px;box-shadow:6px 6px 0 var(--ink);margin:16px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.tag{display:inline-block;background:var(--yel);color:#1F1B3A;font-weight:800;border-radius:99px;padding:2px 14px;font-size:.9rem}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;padding-left:50px;position:relative;margin:12px 0}
+.steps li:before{content:counter(s);position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;background:var(--pink);color:#fff;display:grid;place-items:center;font-family:'Baloo 2';font-weight:800}
+.tblwrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:420px}
+td,th{padding:8px 10px;border-bottom:2px dashed var(--mut);text-align:left}
+th{background:var(--sky);color:#1F1B3A}
+select,button{font:inherit;font-weight:800;border:3px solid var(--ink);border-radius:14px;padding:10px 14px;background:var(--card);color:var(--ink)}
+button{cursor:pointer;background:var(--yel);color:#1F1B3A}
+button:hover{transform:translateY(-2px)}
+:focus-visible{outline:4px solid var(--pur);outline-offset:2px}
+.builder{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.res{margin-top:14px;text-align:center;background:linear-gradient(135deg,var(--mint),var(--sky));color:#1F1B3A;border-radius:18px;padding:16px}
+.res .f{font-family:'Baloo 2';font-size:3rem;font-weight:800}
+.res .n{font-size:1.3rem;font-weight:800}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.prop{border:3px solid var(--ink);border-radius:22px;padding:18px;box-shadow:6px 6px 0 var(--ink);color:#1F1B3A}
+.prop .e{font-size:2.4rem}
+.p1{background:var(--yel)}.p2{background:var(--mint)}.p3{background:var(--sky)}.p4{background:#ffb3d1}
+.state{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.state button.on{background:var(--pur);color:#fff}
+.lamp{font-size:4rem;text-align:center;transition:filter .3s}
+.lamp.off{filter:grayscale(1) brightness(.6)}
+.lat{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;max-width:260px;margin:8px auto}
+.lat span{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.8rem;color:#1F1B3A;transition:transform .6s}
+.lat span.a{background:var(--pink)}.lat span.c{background:var(--sky)}
+.lat.free span:nth-child(3n){transform:translate(8px,-6px)}.lat.free span:nth-child(3n+1){transform:translate(-7px,7px)}.lat.free span:nth-child(3n+2){transform:translate(5px,5px)}
+.q{margin:14px 0}
+.q .opt{display:block;width:100%;text-align:left;margin:6px 0;background:var(--card);color:var(--ink)}
+.opt.ok{background:var(--mint);color:#1F1B3A}.opt.no{background:#ff9bb8;color:#1F1B3A}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:16px 0}.note{background:#dbe9ff;color:#1F1B3A;border:3px solid var(--ink);border-radius:18px 18px 4px 18px;padding:14px;box-shadow:6px 6px 0 var(--ink)}.note h3{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:6px 10px;font-size:1.05rem;text-align:center}.note textarea{width:100%;min-height:90px;border:2px dashed var(--ink);border-radius:12px;padding:8px;font:inherit;background:#fff;color:#1F1B3A;resize:vertical}.note button{margin-top:8px}.note .ex{display:none;background:var(--yel);border-radius:12px;padding:8px 12px;margin-top:8px;font-weight:700}.note .ex.show{display:block}.n2{background:#ffe0ec}.n3{background:#d6f7e9}.n4{background:#fff0b8}details.acc{margin:12px 0;border:3px solid var(--ink);border-radius:16px;overflow:hidden;background:var(--card)}details.acc summary{cursor:pointer;list-style:none;padding:12px 16px;font-family:"Baloo 2",Nunito,sans-serif;font-weight:800;font-size:1.15rem;background:var(--yel);color:#1F1B3A;display:flex;justify-content:space-between;align-items:center}details.acc summary::-webkit-details-marker{display:none}details.acc summary::after{content:"+";font-size:1.6rem;line-height:1}details.acc[open] summary::after{content:"\2212"}details.acc>div,details.acc>p{margin:12px}details.acc:nth-of-type(2) summary{background:var(--sky)}details.acc:nth-of-type(3) summary{background:var(--mint)}details.acc:nth-of-type(4) summary{background:#ffb3d1}
+.idc{display:inline-block;background:#fff;color:#1F1B3A;border:3px solid #1F1B3A;border-radius:16px;padding:10px 16px;box-shadow:4px 4px 0 #1F1B3A;font-size:.95rem;line-height:1.5;margin-top:8px;position:relative;z-index:1}.idc b{color:#6C4DF6}footer{text-align:center;padding:30px 18px;color:var(--mut)}
+sub,sup{font-size:.6em}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<span class="tag">Kimia Kelas X · Ikatan Kimia</span>
+<h1>Ionik Seru!</h1>
+<p>Belajar ikatan ionik: cara menulis rumus, memberi nama, dan memahami kenapa garam dapur sifatnya begitu unik.</p>
+<div class="ion i1">Na⁺</div><div class="ion i2">Cl⁻</div><div class="ion i3">⚡</div>
+</div></header>
+<nav><a href="#intro">Kenalan</a><a href="#rumus">Rumus &amp; Nama</a><a href="#sifat">Sifat</a><a href="#kuis">Kuis</a></nav>
+<main class="wrap">
+
+<section id="intro">
+<h2>Apa itu senyawa ionik?</h2>
+<div class="box"><p>Senyawa ionik terbentuk saat atom <b>logam</b> melepas elektron menjadi <b>kation (+)</b>, lalu atom <b>nonlogam</b> menerima elektron menjadi <b>anion (−)</b>. Dua ion yang berlawanan muatan saling tarik-menarik: itulah <b>ikatan ionik</b>.</p>
+<p>Contoh: Na melepas 1 elektron → Na⁺. Cl menerima 1 elektron → Cl⁻. Jadilah <b>NaCl</b>, garam dapur!</p></div>
+</section>
+
+<section id="rumus">
+<h2>1. Rumus kimia &amp; tata nama</h2>
+<div class="box"><h3>Rumus umum senyawa ionik</h3><p>Rumus senyawa ionik ditulis <b>X<sub>m</sub>Y<sub>n</sub></b>. Jika diuraikan, senyawa ini terdiri dari kation <b>X<sup>n+</sup></b> dan anion <b>Y<sup>m−</sup></b>.</p><p>Menamainya mudah: gabungkan <b>nama kation + nama anion</b>. Kation adalah spesi bermuatan positif, anion bermuatan negatif. Ada dua jenis kation dan dua jenis anion: <b>sederhana (monoatomik)</b> dan <b>poliatomik</b>.</p></div>
+<h3 style="margin-top:24px">Apa bedanya sederhana dan poliatomik?</h3>
+<div class="cards">
+<div class="prop p1"><h3>Kation sederhana (monoatomik)</h3><p>Ion positif yang terdiri dari <b>satu atom</b> logam yang melepas elektron. Namanya sama dengan nama unsurnya.</p><p>Contoh: Na⁺ (natrium), Ca²⁺ (kalsium), Al³⁺ (aluminium), Fe³⁺ (besi(III)).</p></div>
+<div class="prop p2"><h3>Kation poliatomik</h3><p>Ion positif yang terdiri dari <b>beberapa atom</b> (nonlogam) yang terikat kovalen dan bersama-sama bermuatan positif. Jumlahnya sedikit.</p><p>Contoh: NH₄⁺ (amonium), H₃O⁺ (hidronium).</p></div>
+<div class="prop p3"><h3>Anion sederhana (monoatomik)</h3><p>Ion negatif yang terdiri dari <b>satu atom</b> nonlogam yang menerima elektron. Namanya unsur dengan akhiran <b>-ida</b>.</p><p>Contoh: Cl⁻ (klorida), O²⁻ (oksida), S²⁻ (sulfida).</p></div>
+<div class="prop p4"><h3>Anion poliatomik</h3><p>Ion negatif yang terdiri dari <b>beberapa atom</b> yang terikat kovalen dan bersama-sama bermuatan negatif. Namanya khusus, banyak berakhiran <b>-at</b>; OH⁻ (hidroksida) dan CN⁻ (sianida) berakhiran -ida.</p><p>Contoh: NO₃⁻ (nitrat), SO₄²⁻ (sulfat), PO₄³⁻ (fosfat).</p></div>
+</div>
+<div class="box"><b>Ingat!</b> Ion poliatomik dianggap <b>satu kesatuan</b>. Karena itu, saat indeksnya lebih dari 1, tulis dalam kurung: Ca(OH)<sub>2</sub>, bukan CaOH<sub>2</sub>.</div>
+<div class="box"><h3>📋 Tabel ion-ion penting</h3><p>Tekan judul tabel untuk membuka atau menutupnya.</p>
+<details class="acc"><summary>Kation sederhana</summary><div class="tblwrap"><table><tr><th>Golongan</th><th>Unsur</th><th>Simbol</th><th>Nama ion</th></tr>
+<tr><td>IA</td><td>Litium (Li)</td><td>Li⁺</td><td>ion litium</td></tr>
+<tr><td>IA</td><td>Natrium (Na)</td><td>Na⁺</td><td>ion natrium</td></tr>
+<tr><td>IA</td><td>Kalium (K)</td><td>K⁺</td><td>ion kalium</td></tr>
+<tr><td>IIA</td><td>Magnesium (Mg)</td><td>Mg²⁺</td><td>ion magnesium</td></tr>
+<tr><td>IIA</td><td>Kalsium (Ca)</td><td>Ca²⁺</td><td>ion kalsium</td></tr>
+<tr><td>IIA</td><td>Barium (Ba)</td><td>Ba²⁺</td><td>ion barium</td></tr>
+<tr><td>IIIA</td><td>Aluminium (Al)</td><td>Al³⁺</td><td>ion aluminium</td></tr>
+<tr><td>IVA</td><td>Timah (Sn)</td><td>Sn²⁺ / Sn⁴⁺</td><td>ion timah(II) / ion timah(IV)</td></tr>
+<tr><td>IVA</td><td>Timbel (Pb)</td><td>Pb²⁺ / Pb⁴⁺</td><td>ion timbel(II) / ion timbel(IV)</td></tr>
+<tr><td>IB</td><td>Tembaga (Cu)</td><td>Cu⁺ / Cu²⁺</td><td>ion tembaga(I) / ion tembaga(II)</td></tr>
+<tr><td>IB</td><td>Perak (Ag)</td><td>Ag⁺</td><td>ion perak</td></tr>
+<tr><td>IIB</td><td>Seng (Zn)</td><td>Zn²⁺</td><td>ion seng</td></tr>
+<tr><td>IIB</td><td>Raksa (Hg)</td><td>Hg²⁺</td><td>ion raksa(II)</td></tr>
+<tr><td>VIB</td><td>Kromium (Cr)</td><td>Cr²⁺ / Cr³⁺</td><td>ion kromium(II) / ion kromium(III)</td></tr>
+<tr><td>VIIB</td><td>Mangan (Mn)</td><td>Mn²⁺</td><td>ion mangan(II)</td></tr>
+<tr><td>VIIIB</td><td>Besi (Fe)</td><td>Fe²⁺ / Fe³⁺</td><td>ion besi(II) / ion besi(III)</td></tr>
+<tr><td>VIIIB</td><td>Kobalt (Co)</td><td>Co²⁺</td><td>ion kobalt(II)</td></tr>
+<tr><td>VIIIB</td><td>Nikel (Ni)</td><td>Ni²⁺</td><td>ion nikel(II)</td></tr></table></div>
+<p><small>Golongan IA–IVA adalah golongan utama; golongan B adalah logam transisi. Logam transisi (dan timah/timbel) bisa punya lebih dari satu muatan, sehingga namanya diberi angka Romawi.</small></p></details>
+<details class="acc"><summary>Kation poliatomik</summary><div class="tblwrap"><table><tr><th>Unsur penyusun</th><th>Simbol</th><th>Nama ion</th></tr>
+<tr><td>N, H</td><td>NH<sub>4</sub>⁺</td><td>ion amonium</td></tr>
+<tr><td>H, O</td><td>H<sub>3</sub>O⁺</td><td>ion hidronium</td></tr></table></div></details>
+<details class="acc"><summary>Anion sederhana</summary><div class="tblwrap"><table><tr><th>Golongan</th><th>Unsur</th><th>Simbol</th><th>Nama ion</th></tr>
+<tr><td>IA</td><td>Hidrogen (H)</td><td>H⁻</td><td>ion hidrida</td></tr>
+<tr><td>VA</td><td>Nitrogen (N)</td><td>N³⁻</td><td>ion nitrida</td></tr>
+<tr><td>VA</td><td>Fosforus (P)</td><td>P³⁻</td><td>ion fosfida</td></tr>
+<tr><td>VIA</td><td>Oksigen (O)</td><td>O²⁻</td><td>ion oksida</td></tr>
+<tr><td>VIA</td><td>Belerang (S)</td><td>S²⁻</td><td>ion sulfida</td></tr>
+<tr><td>VIIA</td><td>Fluor (F)</td><td>F⁻</td><td>ion fluorida</td></tr>
+<tr><td>VIIA</td><td>Klor (Cl)</td><td>Cl⁻</td><td>ion klorida</td></tr>
+<tr><td>VIIA</td><td>Brom (Br)</td><td>Br⁻</td><td>ion bromida</td></tr>
+<tr><td>VIIA</td><td>Iod (I)</td><td>I⁻</td><td>ion iodida</td></tr></table></div></details>
+<details class="acc"><summary>Anion poliatomik</summary><div class="tblwrap"><table><tr><th>Unsur penyusun</th><th>Simbol</th><th>Nama ion</th></tr>
+<tr><td>O, H</td><td>OH⁻</td><td>ion hidroksida</td></tr>
+<tr><td>C, N</td><td>CN⁻</td><td>ion sianida</td></tr>
+<tr><td>N, O</td><td>NO<sub>3</sub>⁻</td><td>ion nitrat</td></tr>
+<tr><td>N, O</td><td>NO<sub>2</sub>⁻</td><td>ion nitrit</td></tr>
+<tr><td>S, O</td><td>SO<sub>4</sub>²⁻</td><td>ion sulfat</td></tr>
+<tr><td>S, O</td><td>SO<sub>3</sub>²⁻</td><td>ion sulfit</td></tr>
+<tr><td>C, O</td><td>CO<sub>3</sub>²⁻</td><td>ion karbonat</td></tr>
+<tr><td>P, O</td><td>PO<sub>4</sub>³⁻</td><td>ion fosfat</td></tr>
+<tr><td>C, H, O</td><td>CH<sub>3</sub>COO⁻</td><td>ion asetat</td></tr>
+<tr><td>Mn, O</td><td>MnO<sub>4</sub>⁻</td><td>ion permanganat</td></tr>
+<tr><td>Cr, O</td><td>CrO<sub>4</sub>²⁻</td><td>ion kromat</td></tr>
+<tr><td>Cr, O</td><td>Cr<sub>2</sub>O<sub>7</sub>²⁻</td><td>ion dikromat</td></tr></table></div>
+<p><small>Ion poliatomik tersusun dari beberapa unsur, sehingga tidak punya satu golongan dan kolom golongan tidak dicantumkan.</small></p></details></div>
+<div class="box"><h3>🧩 Tabel kombinasi kation dan anion</h3><p>Rumus kimia diperoleh dengan metode silang. Tekan judul tabel untuk membuka.</p>
+<details class="acc"><summary>Kation monoatomik + anion monoatomik</summary><div class="tblwrap"><table><tr><th>Kation</th><th>Anion</th><th>Rumus kimia</th><th>Nama senyawa</th></tr>
+<tr><td>Na<sup>+</sup> (natrium)</td><td>Cl<sup>−</sup> (klorida)</td><td>NaCl</td><td>natrium klorida</td></tr>
+<tr><td>Mg<sup>2+</sup> (magnesium)</td><td>Cl<sup>−</sup> (klorida)</td><td>MgCl<sub>2</sub></td><td>magnesium klorida</td></tr>
+<tr><td>Fe<sup>3+</sup> (besi(III))</td><td>Cl<sup>−</sup> (klorida)</td><td>FeCl<sub>3</sub></td><td>besi(III) klorida</td></tr>
+<tr><td>Ca<sup>2+</sup> (kalsium)</td><td>F<sup>−</sup> (fluorida)</td><td>CaF<sub>2</sub></td><td>kalsium fluorida</td></tr>
+<tr><td>Ag<sup>+</sup> (perak)</td><td>Br<sup>−</sup> (bromida)</td><td>AgBr</td><td>perak bromida</td></tr>
+<tr><td>K<sup>+</sup> (kalium)</td><td>S<sup>2−</sup> (sulfida)</td><td>K<sub>2</sub>S</td><td>kalium sulfida</td></tr>
+<tr><td>Ca<sup>2+</sup> (kalsium)</td><td>O<sup>2−</sup> (oksida)</td><td>CaO</td><td>kalsium oksida</td></tr>
+<tr><td>Al<sup>3+</sup> (aluminium)</td><td>O<sup>2−</sup> (oksida)</td><td>Al<sub>2</sub>O<sub>3</sub></td><td>aluminium oksida</td></tr>
+<tr><td>Mg<sup>2+</sup> (magnesium)</td><td>N<sup>3−</sup> (nitrida)</td><td>Mg<sub>3</sub>N<sub>2</sub></td><td>magnesium nitrida</td></tr></table></div></details>
+<details class="acc"><summary>Kation monoatomik + anion poliatomik</summary><div class="tblwrap"><table><tr><th>Kation</th><th>Anion</th><th>Rumus kimia</th><th>Nama senyawa</th></tr>
+<tr><td>Na<sup>+</sup> (natrium)</td><td>OH<sup>−</sup> (hidroksida)</td><td>NaOH</td><td>natrium hidroksida</td></tr>
+<tr><td>Ca<sup>2+</sup> (kalsium)</td><td>OH<sup>−</sup> (hidroksida)</td><td>Ca(OH)<sub>2</sub></td><td>kalsium hidroksida</td></tr>
+<tr><td>Al<sup>3+</sup> (aluminium)</td><td>OH<sup>−</sup> (hidroksida)</td><td>Al(OH)<sub>3</sub></td><td>aluminium hidroksida</td></tr>
+<tr><td>K<sup>+</sup> (kalium)</td><td>NO<sub>3</sub><sup>−</sup> (nitrat)</td><td>KNO<sub>3</sub></td><td>kalium nitrat</td></tr>
+<tr><td>Ag<sup>+</sup> (perak)</td><td>NO<sub>3</sub><sup>−</sup> (nitrat)</td><td>AgNO<sub>3</sub></td><td>perak nitrat</td></tr>
+<tr><td>Na<sup>+</sup> (natrium)</td><td>SO<sub>4</sub><sup>2−</sup> (sulfat)</td><td>Na<sub>2</sub>SO<sub>4</sub></td><td>natrium sulfat</td></tr>
+<tr><td>Cu<sup>2+</sup> (tembaga(II))</td><td>SO<sub>4</sub><sup>2−</sup> (sulfat)</td><td>CuSO<sub>4</sub></td><td>tembaga(II) sulfat</td></tr>
+<tr><td>Al<sup>3+</sup> (aluminium)</td><td>SO<sub>4</sub><sup>2−</sup> (sulfat)</td><td>Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub></td><td>aluminium sulfat</td></tr>
+<tr><td>Ca<sup>2+</sup> (kalsium)</td><td>CO<sub>3</sub><sup>2−</sup> (karbonat)</td><td>CaCO<sub>3</sub></td><td>kalsium karbonat</td></tr>
+<tr><td>Ca<sup>2+</sup> (kalsium)</td><td>PO<sub>4</sub><sup>3−</sup> (fosfat)</td><td>Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub></td><td>kalsium fosfat</td></tr></table></div></details>
+<details class="acc"><summary>Kation poliatomik + anion monoatomik</summary><div class="tblwrap"><table><tr><th>Kation</th><th>Anion</th><th>Rumus kimia</th><th>Nama senyawa</th></tr>
+<tr><td>NH<sub>4</sub><sup>+</sup> (amonium)</td><td>Cl<sup>−</sup> (klorida)</td><td>NH<sub>4</sub>Cl</td><td>amonium klorida</td></tr>
+<tr><td>NH<sub>4</sub><sup>+</sup> (amonium)</td><td>F<sup>−</sup> (fluorida)</td><td>NH<sub>4</sub>F</td><td>amonium fluorida</td></tr>
+<tr><td>NH<sub>4</sub><sup>+</sup> (amonium)</td><td>Br<sup>−</sup> (bromida)</td><td>NH<sub>4</sub>Br</td><td>amonium bromida</td></tr>
+<tr><td>NH<sub>4</sub><sup>+</sup> (amonium)</td><td>I<sup>−</sup> (iodida)</td><td>NH<sub>4</sub>I</td><td>amonium iodida</td></tr>
+<tr><td>NH<sub>4</sub><sup>+</sup> (amonium)</td><td>S<sup>2−</sup> (sulfida)</td><td>(NH<sub>4</sub>)<sub>2</sub>S</td><td>amonium sulfida</td></tr></table></div></details>
+<details class="acc"><summary>Kation poliatomik + anion poliatomik</summary><div class="tblwrap"><table><tr><th>Kation</th><th>Anion</th><th>Rumus kimia</th><th>Nama senyawa</th></tr>
+<tr><td>NH<sub>4</sub><sup>+</sup> (amonium)</td><td>OH<sup>−</sup> (hidroksida)</td><td>NH<sub>4</sub>OH</td><td>amonium hidroksida</td></tr>
+<tr><td>NH<sub>4</sub><sup>+</sup> (amonium)</td><td>NO<sub>3</sub><sup>−</sup> (nitrat)</td><td>NH<sub>4</sub>NO<sub>3</sub></td><td>amonium nitrat</td></tr>
+<tr><td>NH<sub>4</sub><sup>+</sup> (amonium)</td><td>SO<sub>4</sub><sup>2−</sup> (sulfat)</td><td>(NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub></td><td>amonium sulfat</td></tr>
+<tr><td>NH<sub>4</sub><sup>+</sup> (amonium)</td><td>CO<sub>3</sub><sup>2−</sup> (karbonat)</td><td>(NH<sub>4</sub>)<sub>2</sub>CO<sub>3</sub></td><td>amonium karbonat</td></tr>
+<tr><td>NH<sub>4</sub><sup>+</sup> (amonium)</td><td>PO<sub>4</sub><sup>3−</sup> (fosfat)</td><td>(NH<sub>4</sub>)<sub>3</sub>PO<sub>4</sub></td><td>amonium fosfat</td></tr></table></div></details>
+</div>
+<div class="box"><h3>Cara menulis rumus: metode silang</h3>
+<ol class="steps">
+<li>Tulis kation di depan, anion di belakang, lengkap dengan muatannya.</li>
+<li>Silangkan angka muatan: muatan kation jadi indeks anion, muatan anion jadi indeks kation.</li>
+<li>Sederhanakan jika bisa, abaikan indeks 1, dan beri tanda kurung untuk ion poliatomik yang indeksnya lebih dari 1.</li>
+</ol>
+<p>Contoh: Al³⁺ + O²⁻ → Al<sub>2</sub>O<sub>3</sub>. Ca²⁺ + OH⁻ → Ca(OH)<sub>2</sub>.</p>
+<h3 style="margin-top:18px">Cara memberi nama senyawa (tata nama)</h3>
+<ol class="steps">
+<li>Tulis <b>nama kation</b> lebih dulu, lalu <b>nama anion</b>. Nama ion bisa dilihat di tabel ion-ion penting.</li>
+<li>Anion monoatomik berakhiran <b>-ida</b> (Cl⁻ → klorida). Anion poliatomik memakai nama khusus (SO<sub>4</sub>²⁻ → sulfat).</li>
+<li>Logam yang punya lebih dari satu muatan memakai <b>angka Romawi</b> (Fe³⁺ → besi(III)).</li>
+<li><b>Indeks tidak disebut</b> dalam nama senyawa.</li>
+</ol>
+<p>Contoh: Al<sub>2</sub>O<sub>3</sub> → aluminium oksida. Ca(OH)<sub>2</sub> → kalsium hidroksida. FeCl<sub>3</sub> → besi(III) klorida.</p></div>
+
+<div class="box"><h3>🧪 Coba sendiri: pabrik senyawa</h3>
+<p>Pilih satu kation dan satu anion.</p>
+<div class="builder"><select id="kat" aria-label="Kation"></select><b>+</b><select id="an" aria-label="Anion"></select></div>
+<div class="res"><div class="f" id="rf"></div><div class="n" id="rn"></div><div id="rs"></div></div></div>
+</section>
+
+<section id="sifat">
+<h2>2. Sifat-sifat senyawa ionik</h2>
+<div class="cards">
+<div class="prop p1"><div class="e">🧊</div><h3>Wujud fisik</h3><p>Padat pada suhu kamar, keras tetapi rapuh. Ion tersusun rapi dalam kisi kristal; jika digeser, muatan sejenis bertemu dan saling tolak sehingga kristal pecah.</p></div>
+<div class="prop p2"><div class="e">🔥</div><h3>Titik leleh &amp; didih tinggi</h3><p>Gaya tarik antar ion sangat kuat, butuh banyak energi untuk memutusnya. NaCl meleleh pada sekitar 801 °C.</p></div>
+<div class="prop p3"><div class="e">💧</div><h3>Kelarutan</h3><p>Umumnya larut dalam air (pelarut polar) karena molekul air menarik dan memisahkan ion-ionnya. Tidak larut dalam pelarut nonpolar seperti minyak.</p></div>
+<div class="prop p4"><div class="e">💡</div><h3>Daya hantar listrik</h3><p>Menghantarkan listrik saat lelehan atau larutan, tetapi tidak saat padatan. Penyebabnya: ion hanya bisa bergerak bebas pada kondisi tersebut.</p></div>
+</div>
+</section>
+
+<section id="kuis">
+<h2>Kuis kilat</h2>
+<div class="box" id="quiz"></div>
+</section>
+</main>
+<footer>Disusun oleh Aldino Yunior · Guru Pamong: Dasianto, S.Pd<br>SMA Brawijaya Smart School<br>Selamat belajar! 🎉</footer>
+
+<script>
+var K=[["Na⁺","natrium",1,"Na"],["K⁺","kalium",1,"K"],["Mg²⁺","magnesium",2,"Mg"],["Ca²⁺","kalsium",2,"Ca"],["Al³⁺","aluminium",3,"Al"],["Fe³⁺","besi(III)",3,"Fe"],["NH₄⁺","amonium",1,"NH4",1]];
+var A=[["Cl⁻","klorida",1,"Cl"],["F⁻","fluorida",1,"F"],["O²⁻","oksida",2,"O"],["S²⁻","sulfida",2,"S"],["OH⁻","hidroksida",1,"OH",1],["NO₃⁻","nitrat",1,"NO3",1],["SO₄²⁻","sulfat",2,"SO4",1],["PO₄³⁻","fosfat",3,"PO4",1]];
+var ks=document.getElementById('kat'),as=document.getElementById('an');
+K.forEach(function(x,i){ks.add(new Option(x[0]+" ("+x[1]+")",i))});
+A.forEach(function(x,i){as.add(new Option(x[0]+" ("+x[1]+")",i))});
+function g(a,b){return b?g(b,a%b):a}
+function sub(s){return s.replace(/(\d+)/g,'<sub>$1</sub>')}
+function part(x,n){var s=sub(x[3]);if(n==1)return s;return (x[4]?"("+s+")":s)+"<sub>"+n+"</sub>"}
+function build(){var k=K[ks.value],a=A[as.value],d=g(k[2],a[2]),nk=a[2]/d,na=k[2]/d;
+document.getElementById('rf').innerHTML=part(k,nk)+part(a,na);
+document.getElementById('rn').textContent=k[1]+" "+a[1];
+document.getElementById('rs').textContent="Muatan: "+nk+" × (+"+k[2]+") + "+na+" × (−"+a[2]+") = 0 ✓"}
+ks.onchange=as.onchange=build;build();
+// kuis
+var Q=[["Rumus senyawa dari Mg²⁺ dan Cl⁻ adalah...",["MgCl","MgCl₂","Mg₂Cl","Mg₂Cl₂"],1],
+["Nama senyawa Al₂O₃ adalah...",["aluminium oksida","dialuminium trioksida","aluminium oksigen","aluminat"],0],
+["Mengapa padatan NaCl tidak menghantarkan listrik?",["Tidak punya ion","Ion tidak dapat bergerak bebas","Tidak punya elektron","Ion bermuatan nol"],1],
+["Titik leleh senyawa ionik tinggi karena...",["Ikatannya antar molekul lemah","Gaya tarik antar ion sangat kuat","Massa atomnya kecil","Berwujud gas"],1],
+["Senyawa ionik umumnya larut dalam...",["Air","Minyak","Bensin","Benzena"],0]];
+var qz=document.getElementById('quiz'),score=0,done=0;
+Q.forEach(function(q,i){var d=document.createElement('div');d.className='q';d.innerHTML='<b>'+(i+1)+'. '+q[0]+'</b>';
+q[1].forEach(function(t,j){var b=document.createElement('button');b.className='opt';b.textContent=t;
+b.onclick=function(){if(d.dataset.d)return;d.dataset.d=1;done++;
+if(j==q[2]){b.classList.add('ok');score++}else{b.classList.add('no');d.children[q[2]+1].classList.add('ok')}
+if(done==Q.length)res.textContent=score==Q.length?'🏆 Sempurna! '+score+'/'+Q.length:'Skormu '+score+'/'+Q.length+'. Baca lagi materinya, lalu coba lagi!'};
+d.appendChild(b)});qz.appendChild(d)});
+var res=document.createElement('p');res.style.cssText='font-weight:800;font-size:1.2rem';qz.appendChild(res);
+</script>
+</body>
+</html>
